@@ -121,100 +121,100 @@ public class CreateController {
 
 
         //Henry's part
-        num = _textfield2.getText();
-        number = Integer.parseInt(num);
-        if (number > 10) {
-            number = 10;
-        }
-        if (number <= 0) {
-            number = 1;
-        }
-
-        try {
-            String apiKey = getAPIKey("apiKey");
-            String sharedSecret = getAPIKey("sharedSecret");
-
-            Flickr flickr = new Flickr(apiKey, sharedSecret, new REST());
-
-            String query = term;
-            int resultsPerPage = 10;
-            int page = 0;
-
-            PhotosInterface photos = flickr.getPhotosInterface();
-            SearchParameters params = new SearchParameters();
-            params.setSort(SearchParameters.RELEVANCE);
-            params.setMedia("photos");
-            params.setText(query);
-
-            PhotoList<Photo> results = photos.search(params, resultsPerPage, page);
-            System.out.println("Retrieving " + results.size() + " results");
-            int i = 1;
-
-            for (Photo photo : results) {
-                if (i <= number) {
-                    try {
-
-                        BufferedImage image = photos.getImage(photo, Size.SMALL);
-                        String filename = term + Integer.toString(i) + ".jpg";
-                        File outputfile = new File(filename);
-                        ImageIO.write(image, "jpg", outputfile);
-                        System.out.println("Downloaded " + filename);
-                        i = i + 1;
-
-                    } catch (FlickrException | IOException fe) {
-                        System.err.println("Ignoring image " + photo.getId() + ": " + fe.getMessage());
-                    }
-                } else {
-                    break;
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        File audio = new File(_textfield.getText());
-        if(! audio.exists()) {
-            String cmd5 = "mkdir " + _textfield.getText() + "; mv *.jpg " + _textfield.getText();
-            pbuilder.getInstance().probuild(cmd5);
-        }
-        String cmd5 = "mv *.jpg " + _textfield.getText();
-        pbuilder.getInstance().probuild(cmd5);
-
-
-        System.out.println("\nDone");
-
-
-}
-
-
-//Henry's Method
-private static String getAPIKey(String key) throws Exception {
-    // TODO fix the following based on where you will have your config file stored
-
-    String config = System.getProperty("user.dir")
-            + System.getProperty("file.separator") + "flickr-api-keys.txt";
-
-//		String config = System.getProperty("user.home")
-//				+ System.getProperty("file.separator")+ "bin"
-//				+ System.getProperty("file.separator")+ "flickr-api-keys.txt";
-    File file = new File(config);
-    BufferedReader br = new BufferedReader(new FileReader(file));
-
-    String line;
-    while ((line = br.readLine()) != null) {
-        if (line.trim().startsWith(key)) {
-            br.close();
-            return line.substring(line.indexOf("=") + 1).trim();
-        }
+//        num = _textfield2.getText();
+//        number = Integer.parseInt(num);
+//        if (number > 10) {
+//            number = 10;
+//        }
+//        if (number <= 0) {
+//            number = 1;
+//        }
+//
+//        try {
+//            String apiKey = getAPIKey("apiKey");
+//            String sharedSecret = getAPIKey("sharedSecret");
+//
+//            Flickr flickr = new Flickr(apiKey, sharedSecret, new REST());
+//
+//            String query = term;
+//            int resultsPerPage = 10;
+//            int page = 0;
+//
+//            PhotosInterface photos = flickr.getPhotosInterface();
+//            SearchParameters params = new SearchParameters();
+//            params.setSort(SearchParameters.RELEVANCE);
+//            params.setMedia("photos");
+//            params.setText(query);
+//
+//            PhotoList<Photo> results = photos.search(params, resultsPerPage, page);
+//            System.out.println("Retrieving " + results.size() + " results");
+//            int i = 1;
+//
+//            for (Photo photo : results) {
+//                if (i <= number) {
+//                    try {
+//
+//                        BufferedImage image = photos.getImage(photo, Size.SMALL);
+//                        String filename = term + Integer.toString(i) + ".jpg";
+//                        File outputfile = new File(filename);
+//                        ImageIO.write(image, "jpg", outputfile);
+//                        System.out.println("Downloaded " + filename);
+//                        i = i + 1;
+//
+//                    } catch (FlickrException | IOException fe) {
+//                        System.err.println("Ignoring image " + photo.getId() + ": " + fe.getMessage());
+//                    }
+//                } else {
+//                    break;
+//                }
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        File audio = new File(_textfield.getText());
+//        if(! audio.exists()) {
+//            String cmd5 = "mkdir " + _textfield.getText() + "; mv *.jpg " + _textfield.getText();
+//            pbuilder.getInstance().probuild(cmd5);
+//        }
+//        String cmd5 = "mv *.jpg " + _textfield.getText();
+//        pbuilder.getInstance().probuild(cmd5);
+//
+//
+//        System.out.println("\nDone");
+//
+//
+//}
+//
+//
+////Henry's Method
+//private static String getAPIKey(String key) throws Exception {
+//    // TODO fix the following based on where you will have your config file stored
+//
+//    String config = System.getProperty("user.dir")
+//            + System.getProperty("file.separator") + "flickr-api-keys.txt";
+//
+////		String config = System.getProperty("user.home")
+////				+ System.getProperty("file.separator")+ "bin"
+////				+ System.getProperty("file.separator")+ "flickr-api-keys.txt";
+//    File file = new File(config);
+//    BufferedReader br = new BufferedReader(new FileReader(file));
+//
+//    String line;
+//    while ((line = br.readLine()) != null) {
+//        if (line.trim().startsWith(key)) {
+//            br.close();
+//            return line.substring(line.indexOf("=") + 1).trim();
+//        }
+//    }
+//    br.close();
+//    throw new RuntimeException("Couldn't find " + key + " in config file " + file.getName());
+//
+////finish
+//
+//    }
     }
-    br.close();
-    throw new RuntimeException("Couldn't find " + key + " in config file " + file.getName());
-
-//finish
-
-    }
-
 
 
 public String select(){
