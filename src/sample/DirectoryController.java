@@ -36,7 +36,7 @@ public class DirectoryController {
    public void goInAudioMerge() {
 
 
-        pbuilder.getInstance().saveTerm(_directory.getItems().toString());
+        pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
         SwitchScenes sw = new SwitchScenes(_Audio);
         try {
             sw.switchScenes("AudioMerging.fxml");

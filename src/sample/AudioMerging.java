@@ -29,15 +29,16 @@ public class AudioMerging {
     @FXML
     public void initialize() {
 
-
+//
         String s =pbuilder.getInstance().getTerm();
-        s = s.substring(1,s.length()-1);
-        pbuilder.getInstance().probuild2("cd "+s+".au");
+        System.out.println(s);
+//        s = s.substring(1,s.length()-1);
+//        pbuilder.getInstance().probuild2("cd "+s+".au");
 
 
         _list.getItems().clear();
         pbuilder pro = pbuilder.getInstance();
-        pro.probuild2("ls *.au 2> /dev/null");
+        pro.probuild2("cd "+s+".au; "+"ls *.wav 2> /dev/null");
         List<String> str = pro.getStd();
 
         for (int i = 0; i < str.size(); i++) {

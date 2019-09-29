@@ -37,13 +37,13 @@ public class VideoController {
 
 
         String s =pbuilder.getInstance().getTerm();
-        pbuilder.getInstance().probuild2("cd "+s+".au");
+//        pbuilder.getInstance().probuild2("cd "+s+".au");
 
 
 
         _list.getItems().clear();
         pbuilder pro = pbuilder.getInstance();
-        pro.probuild2("ls *.au 2> /dev/null");
+        pro.probuild2("cd "+s+".au; "+"ls *.wav 2> /dev/null");
         List<String> str = pro.getStd();
 
         for (int i = 0; i < str.size(); i++) {
