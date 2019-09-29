@@ -4,11 +4,11 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
+<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" stylesheets="@Directory.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
    <children>
       <Button layoutX="462.0" layoutY="105.0" mnemonicParsing="false" onAction="#goInAudioMerge" text="Merge Audio" />
       <Button layoutX="468.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToMain" text="Main Menu" />
-      <ListView fx:id="_directory" layoutX="22.0" layoutY="18.0" prefHeight="367.0" prefWidth="200.0" />
-      <Button layoutX="462.0" layoutY="189.0" mnemonicParsing="false" onAction="#goInVideoCreate" text="Create Video" />
+      <ListView fx:id="_directory" layoutX="22.0" layoutY="18.0" opacity="0.5" prefHeight="367.0" prefWidth="200.0" />
+      <Button layoutX="462.0" layoutY="189.0" mnemonicParsing="false" onAction="#goInVideoCreate" stylesheets="@Directory.css" text="Create Video" />
    </children>
 </AnchorPane>

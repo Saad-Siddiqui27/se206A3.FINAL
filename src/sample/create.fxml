@@ -7,11 +7,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="_create" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreateController">
+<AnchorPane fx:id="_create" prefHeight="600.0" prefWidth="1000.0" stylesheets="@create.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CreateController">
    <children>
-      <TextArea fx:id="textArea1" layoutX="14.0" layoutY="99.0" prefHeight="425.0" prefWidth="385.0" />
-      <TextArea fx:id="textArea2" layoutX="601.0" layoutY="88.0" prefHeight="425.0" prefWidth="385.0" />
-      <TextField fx:id="_textfield" layoutX="14.0" layoutY="43.0" />
+      <TextArea fx:id="textArea1" layoutX="14.0" layoutY="99.0" opacity="0.5" prefHeight="425.0" prefWidth="385.0" />
+      <TextArea fx:id="textArea2" layoutX="601.0" layoutY="88.0" opacity="0.5" prefHeight="425.0" prefWidth="385.0" />
+      <TextField fx:id="_textfield" layoutX="14.0" layoutY="43.0" opacity="0.79" />
       <Button layoutX="52.0" layoutY="541.0" mnemonicParsing="false" onAction="#MainMenu" text="Main Menu" />
       <Button layoutX="257.0" layoutY="43.0" mnemonicParsing="false" onAction="#search" text="search" />
       <Button layoutX="462.0" layoutY="386.0" mnemonicParsing="false" onAction="#play" text="Play" />
