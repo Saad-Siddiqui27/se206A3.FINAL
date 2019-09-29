@@ -2,6 +2,7 @@ package sample;
 
 import com.sun.xml.internal.ws.addressing.WsaActionUtil;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -77,143 +78,11 @@ public class CreateController {
                 }
             });
         } else {
-
-            String command = "wikit " + term + "| sed -e :1 -e 's/\\([.?!]\\)[[:blank:]]\\{1,\\}\\([^[:blank:]]\\)/\\1\\\n" +
-                    "\\2/;t1' ";
-//        pbuild(command);
-
-            try {
-                ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
-
-                Process process = pb.start();
-
-                BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                BufferedReader stderr = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-
-                int exitStatus = process.waitFor();
-
-                StringBuilder sb = new StringBuilder();
-                if (exitStatus == 0) {
-                    String line;
-                    int count = 1;
-                    while ((line = stdout.readLine()) != null) {
-                        sb.append(count++ + ". " + line).append("\n");
-
-                    }
-                } else {
-                    String line;
-                    while ((line = stderr.readLine()) != null) {
-                        System.err.println(line);
-                    }
-                }
-
-                textArea1.setText(sb.toString());
-
-                stderr.close();
-                stdout.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+            Thread object1 = new Thread(new Multi1());
+            object1.start();
 
         }
 
-
-        //Henry's part
-//        num = _textfield2.getText();
-//        number = Integer.parseInt(num);
-//        if (number > 10) {
-//            number = 10;
-//        }
-//        if (number <= 0) {
-//            number = 1;
-//        }
-//
-//        try {
-//            String apiKey = getAPIKey("apiKey");
-//            String sharedSecret = getAPIKey("sharedSecret");
-//
-//            Flickr flickr = new Flickr(apiKey, sharedSecret, new REST());
-//
-//            String query = term;
-//            int resultsPerPage = 10;
-//            int page = 0;
-//
-//            PhotosInterface photos = flickr.getPhotosInterface();
-//            SearchParameters params = new SearchParameters();
-//            params.setSort(SearchParameters.RELEVANCE);
-//            params.setMedia("photos");
-//            params.setText(query);
-//
-//            PhotoList<Photo> results = photos.search(params, resultsPerPage, page);
-//            System.out.println("Retrieving " + results.size() + " results");
-//            int i = 1;
-//
-//            for (Photo photo : results) {
-//                if (i <= number) {
-//                    try {
-//
-//                        BufferedImage image = photos.getImage(photo, Size.SMALL);
-//                        String filename = term + Integer.toString(i) + ".jpg";
-//                        File outputfile = new File(filename);
-//                        ImageIO.write(image, "jpg", outputfile);
-//                        System.out.println("Downloaded " + filename);
-//                        i = i + 1;
-//
-//                    } catch (FlickrException | IOException fe) {
-//                        System.err.println("Ignoring image " + photo.getId() + ": " + fe.getMessage());
-//                    }
-//                } else {
-//                    break;
-//                }
-//            }
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        File audio = new File(_textfield.getText());
-//        if(! audio.exists()) {
-//            String cmd5 = "mkdir " + _textfield.getText() + "; mv *.jpg " + _textfield.getText();
-//            pbuilder.getInstance().probuild(cmd5);
-//        }
-//        String cmd5 = "mv *.jpg " + _textfield.getText();
-//        pbuilder.getInstance().probuild(cmd5);
-//
-//
-//        System.out.println("\nDone");
-//
-//
-//}
-//
-//
-////Henry's Method
-//private static String getAPIKey(String key) throws Exception {
-//    // TODO fix the following based on where you will have your config file stored
-//
-//    String config = System.getProperty("user.dir")
-//            + System.getProperty("file.separator") + "flickr-api-keys.txt";
-//
-////		String config = System.getProperty("user.home")
-////				+ System.getProperty("file.separator")+ "bin"
-////				+ System.getProperty("file.separator")+ "flickr-api-keys.txt";
-//    File file = new File(config);
-//    BufferedReader br = new BufferedReader(new FileReader(file));
-//
-//    String line;
-//    while ((line = br.readLine()) != null) {
-//        if (line.trim().startsWith(key)) {
-//            br.close();
-//            return line.substring(line.indexOf("=") + 1).trim();
-//        }
-//    }
-//    br.close();
-//    throw new RuntimeException("Couldn't find " + key + " in config file " + file.getName());
-//
-////finish
-//
-//    }
     }
 
 
@@ -334,48 +203,70 @@ public void Save() {
     }
 
     public void MainMenu(){
-        try {
-            switchScenes("MainMenu.fxml");
-        }catch(IOException e){
-            e.printStackTrace();
-        }
+        Platform.runLater(new Multi() {
+            @Override
+            public void run() {
 
+                try {
+                    switchScenes("MainMenu.fxml");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
+    public class Multi implements Runnable {
 
+        @Override
+        public void run() {
 
+        }
+    }
 
+    public class Multi1 implements Runnable{
 
+        @Override
+        public void run() {
+            String command = "wikit " + term + "| sed -e :1 -e 's/\\([.?!]\\)[[:blank:]]\\{1,\\}\\([^[:blank:]]\\)/\\1\\\n" +
+                    "\\2/;t1' ";
+//        pbuild(command);
 
+            try {
+                ProcessBuilder pb = new ProcessBuilder("bash", "-c", command);
 
-    //Henry new code.
+                Process process = pb.start();
 
-//
-//    public void CombineVideo() throws IOException {
-//        System.out.println("Video");
-//        File f = new File("input.txt");
-//        FileWriter fw = new FileWriter(f);
-//        int i = 1;
-//        while(i<=number){
-//            String cmd = "ffmpeg -loop 1 -i " + term + i + ".jpg -c:v libx264 -t 3 -pix_fmt yuv420p " + term + "temp" + i + ".mkv";
-//            pbuild(cmd);
-//            fw.write("file " + term + "temp" + i + ".mkv\n");
-//            i = i + 1;
-//        }
-//        fw.close();
-//        String cmd2 = "ffmpeg -f concat -safe 0 -i "+f+" -c copy " + term + ".mkv";
-//        pbuild(cmd2);
-//        String cmd3 = "rm *temp.mkv";
-//        pbuild(cmd3);
-//
-//        String cmd5 = "ffmpeg -i " + term + ".mkv -vf drawtext=\"fontfile=/path/to/font.ttf: \\ text='" + term + "': fontcolor=white: fontsize=24: box=1: boxcolor=black@0.5: " + "\\" + " boxborderw=5: x=(w-text_w)/2: y=(h-text_h)/2\" -codec:a copy " + term + num + ".mkv";
-//        pbuild(cmd5);
-////        String cmd6 = "rm " + term + ".mkv";
-////        pbuild(cmd6);
-//        String cmd4 = "rm input.txt";
-////        pbuild(cmd4);
-//    }
-//
+                BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                BufferedReader stderr = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 
+                int exitStatus = process.waitFor();
+
+                StringBuilder sb = new StringBuilder();
+                if (exitStatus == 0) {
+                    String line;
+                    int count = 1;
+                    while ((line = stdout.readLine()) != null) {
+                        sb.append(count++ + ". " + line).append("\n");
+
+                    }
+                } else {
+                    String line;
+                    while ((line = stderr.readLine()) != null) {
+                        System.err.println(line);
+                    }
+                }
+
+                textArea1.setText(sb.toString());
+
+                stderr.close();
+                stdout.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

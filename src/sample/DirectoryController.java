@@ -1,6 +1,9 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.layout.Pane;
@@ -34,40 +37,69 @@ public class DirectoryController {
     }
 
    public void goInAudioMerge() {
+       if (_directory.getSelectionModel().getSelectedItem() == null) {
+           alert();
+       } else {
 
-
-        pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
-        SwitchScenes sw = new SwitchScenes(_Audio);
-        try {
-            sw.switchScenes("AudioMerging.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+           pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
+           SwitchScenes sw = new SwitchScenes(_Audio);
+           try {
+               sw.switchScenes("AudioMerging.fxml");
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
     }
 
     public void goInVideoCreate() {
-
-
-        pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
-        SwitchScenes sw = new SwitchScenes(_Audio);
-        try {
-            sw.switchScenes("VideoCreation.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (_directory.getSelectionModel().getSelectedItem() == null) {
+            alert();
+        } else {
+            pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
+            SwitchScenes sw = new SwitchScenes(_Audio);
+            try {
+                sw.switchScenes("VideoCreation.fxml");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
 
 
     public void switchToMain() {
+        Platform.runLater(new Multi() {
+            @Override
+            public void run() {
+                SwitchScenes sw = new SwitchScenes(_Audio);
 
+                try {
+                    sw.switchScenes("MainMenu.fxml");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
-        SwitchScenes sw = new SwitchScenes(_Audio);
-
-        try {
-            sw.switchScenes("MainMenu.fxml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
+        });
     }
+        public class Multi implements Runnable {
+
+            @Override
+            public void run() {
+
+            }
+        }
+
+        public void alert(){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Please choose a directory");
+            alert.setTitle("Directory");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+
+                }
+            });
+        }
+
 }

@@ -1,8 +1,12 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
@@ -13,12 +17,19 @@ import java.util.List;
 public class playerController {
 
 
+
+    @FXML
+    private Pane _Play;
     @FXML
     private MediaView _view;
     @FXML
     private ListView _list;
+    @FXML
+    private Button _pause;
+    @FXML
+    private Button _mute;
 
-
+    MediaPlayer player;
 
 //    File file = new File("/afs/ec.auckland.ac.nz/users/m/s/msid633/unixhome/IdeaProjects/se206A3/car.au/car.mkv");
 
@@ -38,21 +49,71 @@ public class playerController {
     }
 
     public void setMedia(){
-        File fileUrl = new File("/afs/ec.auckland.ac.nz/users/m/s/msid633/unixhome/IdeaProjects/se206A3/Creations/"+_list.getSelectionModel().getSelectedItem().toString()+".mp4");
+        File fileUrl = new File("Creations/"+_list.getSelectionModel().getSelectedItem().toString()+".mp4");
         Media video = new Media(fileUrl.toURI().toString());
-        MediaPlayer player = new MediaPlayer(video);
+        player = new MediaPlayer(video);
         player.setAutoPlay(true);
         _view.setMediaPlayer(player);
     }
 
     public void play(){
-
-        setMedia();
+        Thread object1 = new Thread(new Multi1());
+        object1.start();
     }
 
 
+    public void MainMenu(){
+        Platform.runLater(new Multi() {
+            @Override
+            public void run() {
+                SwitchScenes sw = new SwitchScenes(_Play);
+
+                try {
+                    sw.switchScenes("MainMenu.fxml");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
 
 
+    public class Multi implements Runnable {
 
+        @Override
+        public void run() {
+
+        }
+    }
+
+    public class Multi1 implements Runnable{
+
+        @Override
+        public void run() {
+            setMedia();
+        }
+    }
+
+    public void pause() {
+        MediaPlayer.Status status = player.getStatus();
+        if(MediaPlayer.Status.PLAYING == status){
+            player.pause();
+            _pause.setText(">");
+        } else {
+            player.play();
+            _pause.setText("||");
+        }
+    }
+
+    public void mute(){
+        if(player.getVolume() == 0){
+            player.setVolume(50);
+            _mute.setText("Mute");
+        }else{
+            player.setVolume(0);
+            _mute.setText("Voice");
+        }
+    }
 
 }

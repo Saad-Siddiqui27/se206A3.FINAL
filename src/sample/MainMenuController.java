@@ -21,12 +21,6 @@ public class MainMenuController {
     Pane _Menu;
 
 
-    @FXML
-    public void initialize() {
-//        String s =pbuilder.getInstance().getTerm();
-//        s = s.substring(1,s.length()-1);
-//        pbuilder.getInstance().probuild("cd /afs/ec.auckland.ac.nz/users/m/s/msid633/unixhome/IdeaProjects/se206A3");
-    }
 
 
 
