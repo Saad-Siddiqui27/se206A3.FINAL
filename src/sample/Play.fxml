@@ -10,10 +10,11 @@
    <children>
       <MediaView fx:id="_view" fitHeight="400.0" fitWidth="400.0" layoutX="655.0" layoutY="43.0" />
       <Button layoutX="234.0" layoutY="20.0" mnemonicParsing="false" onAction="#play" text="play" />
-      <ListView fx:id="_list" layoutX="59.0" layoutY="59.0" prefHeight="423.0" prefWidth="318.0" />
+      <ListView fx:id="_list" layoutX="59.0" layoutY="59.0" opacity="0.76" prefHeight="423.0" prefWidth="318.0" />
       <Button layoutX="932.0" layoutY="547.0" mnemonicParsing="false" onAction="#MainMenu" text="Main Menu" />
-      <Button fx:id="_pause" layoutX="528.0" layoutY="83.0" mnemonicParsing="false" onAction="#pause" text="||" />
-      <Button fx:id="_mute" layoutX="516.0" layoutY="118.0" mnemonicParsing="false" onAction="#mute" text="Mute" />
+      <Button fx:id="_pause" layoutX="493.0" layoutY="83.0" mnemonicParsing="false" onAction="#pause" prefHeight="26.0" prefWidth="72.0" text="||" />
+      <Button fx:id="_mute" layoutX="495.0" layoutY="118.0" mnemonicParsing="false" onAction="#mute" opacity="0.9" prefHeight="26.0" prefWidth="72.0" text="Mute" />
       <Text layoutX="65.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a video to play:" />
+      <Button layoutX="111.0" layoutY="547.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
    </children>
 </AnchorPane>

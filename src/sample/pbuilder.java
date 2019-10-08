@@ -31,6 +31,7 @@ public class pbuilder {
                 ProcessBuilder pb = new ProcessBuilder("bash", "-c", _cmd);
 
                 Process process = pb.start();
+                process.waitFor();
 
 
             } catch (Exception e) {
@@ -45,6 +46,7 @@ public class pbuilder {
                 ProcessBuilder pb = new ProcessBuilder("bash", "-c", _cmd);
 
                 Process process = pb.start();
+                process.waitFor();
 
                 BufferedReader stdout = new BufferedReader(new InputStreamReader(process.getInputStream()));
                 BufferedReader stderr = new BufferedReader(new InputStreamReader(process.getErrorStream()));

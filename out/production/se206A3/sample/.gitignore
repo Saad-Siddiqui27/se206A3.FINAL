@@ -113,7 +113,6 @@ fabric.properties
 *.rar
 *.wav
 *.txt
-*.jpg
 *.mp4
 *.mkv
 

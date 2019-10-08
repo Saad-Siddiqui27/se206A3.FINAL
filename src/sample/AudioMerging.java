@@ -34,7 +34,7 @@ public class AudioMerging {
 
 //
         String s = pbuilder.getInstance().getTerm();
-        System.out.println(s);
+//        System.out.println(s);
 //        s = s.substring(1,s.length()-1);
 //        pbuilder.getInstance().probuild2("cd "+s+".au");
 
@@ -48,6 +48,45 @@ public class AudioMerging {
             _list.getItems().add(str.get(i).substring(0, str.get(i).length() - 4));
         }
         _list.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+
+    }
+
+
+    public void delete(){
+
+        String term;
+        term = _list.getSelectionModel().getSelectedItem().toString();
+        if(!_list.getSelectionModel().getSelectedItem().toString().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure that you want to delete the creation?");
+            alert.setTitle("Delete the creation?");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+
+                    try{
+
+                        String topics;
+                        topics = _list.getSelectionModel().getSelectedItem().toString();
+                        pbuilder.getInstance().probuild ("cd "+pbuilder.getInstance().getTerm()+".au; rm "+ topics+".wav");
+
+                        initialize();
+
+
+
+                    } catch(Exception e)
+
+                    {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            });
+        }
+        initialize();
+
 
 
     }
@@ -78,13 +117,26 @@ public class AudioMerging {
 
             }
             String s = pbuilder.getInstance().getTerm();
-            s = s.substring(1, s.length() - 1);
+//            s = s.substring(1, s.length() - 1);
             pbuilder.getInstance().probuild2("cd " + s + ".au;pwd");
 
             pbuilder.getInstance().probuild("cd " + s + ".au ; sox " + files.toString() + "" + _merged.getText() + ".wav");
 
-            pbuilder.getInstance().probuild("rm " + files.toString());
+//            pbuilder.getInstance().probuild("rm " + files.toString());
+
             initialize();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Audios has been Merged successfully");
+            alert.setTitle("Success");
+
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+
+
+                }
+            });
 
 
         }

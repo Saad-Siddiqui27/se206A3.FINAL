@@ -2,9 +2,7 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -46,6 +44,42 @@ public class playerController {
             _list.getItems().add(str.get(i).substring(0, str.get(i).length() - 4));
         }
         _list.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+
+    public void delete(){
+
+
+        if(!_list.getSelectionModel().getSelectedItem().toString().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure that you want to delete the creation?");
+            alert.setTitle("Delete the creation?");
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+
+                    try{
+
+                        String topics;
+                        topics = _list.getSelectionModel().getSelectedItem().toString();
+                        pbuilder.getInstance().probuild ("cd Creations;"+" rm "+ topics+".mp4");
+
+//                        initialize();
+
+
+
+                    } catch(Exception e)
+
+                    {
+                        e.printStackTrace();
+                    }
+
+
+                }
+            });
+        }
+        initialize();
+
     }
 
     public void setMedia(){

@@ -133,6 +133,19 @@ public void Save() {
     if (i > 40) {
 
         //To do Alerts;
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("The text is over the limit");
+        alert.setTitle("Over the limit");
+
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+
+
+            }
+        });
+
     } else {
 
         try {
@@ -148,6 +161,18 @@ public void Save() {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Your Audio has been Saved");
+        alert.setTitle("Processing done");
+
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+
+
+            }
+        });
 
     }
 
