@@ -12,7 +12,7 @@
       <Button layoutX="488.0" layoutY="137.0" mnemonicParsing="false" onAction="#createVideo" text="Create" />
       <Button layoutX="462.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchBack" text="Back to directory" />
       <Button layoutX="32.0" layoutY="354.0" mnemonicParsing="false" onAction="#switchToMain" text="Main Menu" />
-      <ListView fx:id="_list" layoutX="14.0" layoutY="37.0" opacity="0.5" prefHeight="312.0" prefWidth="200.0" />
+      <ListView fx:id="_list" layoutX="14.0" layoutY="37.0" opacity="0.71" prefHeight="312.0" prefWidth="200.0" />
       <TextField fx:id="_creationName" layoutX="242.0" layoutY="167.0" opacity="0.83" prefHeight="26.0" prefWidth="230.0" promptText="Enter the name for the creation:" />
       <Text fill="#e80303" layoutX="39.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an audio file:" />
    </children>

@@ -10,6 +10,7 @@
       <element id="archive" name="JavaFXApp.jar">
         <element id="module-output" name="se206A3" />
       </element>
+      <element id="library" level="project" name="libs" />
     </root>
   </artifact>
 </component>

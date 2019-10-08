@@ -90,6 +90,20 @@ public class VideoController {
 
             Thread object1 = new Thread(new Multi1());
             object1.start();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("your creation has been created");
+            alert.setTitle("Successful");
+
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+
+
+                }
+            });
+
+
         }
 
 
@@ -105,17 +119,20 @@ public class VideoController {
             s.append(query+j+".jpg ");
 
 
+
+
+
         }
 
 
         System.out.println(s);
-        time = time/number;
+        time = number/time;
         String cmd = "cd "+ query+".au; cat " +s.toString()+ "| ffmpeg -framerate "+time+" -f image2pipe -i - -vf \"scale=iw*min(1920/iw\\,1080/ih):ih*min(1920/iw\\,1080/ih), pad=1920:1080:(1920-iw*min(1920/iw\\,1080/ih))/2:(1080-ih*min(1920/iw\\,1080/ih))/2,format=yuv420p,drawtext=fontfile=myfont.ttf:fontsize=100: fontcolor=white:shadowx=2:x=(w-text_w)/2:y=(h-text_h)/2:text='"+query+"'\" -r 25 "+query+".mp4";
 
         pbuilder.getInstance().probuild(cmd);
 
 
-        String cmd7 = "cd "+ query+".au; ffmpeg -i "+query+".mp4 -i " + _list.getSelectionModel().getSelectedItem().toString() + ".wav -vcodec copy -strict -2 " + _creationName.getText()+".mp4; "+"mv "+_creationName.getText()+".mp4 ../Creations/";
+        String cmd7 = "cd "+ query+".au; ffmpeg -i "+query+".mp4 -i " + _list.getSelectionModel().getSelectedItem().toString() + ".wav -vcodec copy -strict -2 " + _creationName.getText()+".mp4; "+"mv "+_creationName.getText()+".mp4 ../Creations";
 
         pbuilder.getInstance().probuild(cmd7);
 
@@ -260,6 +277,8 @@ public class VideoController {
 
 
                 CombineVideo(time);
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();
