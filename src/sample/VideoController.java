@@ -180,7 +180,7 @@ public class VideoController {
                 SwitchScenes sw = new SwitchScenes(_Video);
 
                 try {
-                    sw.switchScenes("Directoy.fxml");
+                    sw.switchScenes("../Fxml/Directoy.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -198,7 +198,7 @@ public class VideoController {
                 SwitchScenes sw = new SwitchScenes(_Video);
 
                 try {
-                    sw.switchScenes("MainMenu.fxml");
+                    sw.switchScenes("../Fxml/MainMenu.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -270,11 +270,6 @@ public class VideoController {
                 Double time = Double.parseDouble( time1.get(0));
                 System.out.println("time ="+time);
 
-//                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream();
-//                AudioFormat format = audioInputStream.getFormat();
-//                long frames = audioInputStream.getFrameLength();
-//                double durationInSeconds = (frames + 0.0) / format.getFrameRate();
-
 
                 CombineVideo(time);
 
@@ -285,11 +280,7 @@ public class VideoController {
             }
 
 
-
-
         }
-
-
 
     }
 }

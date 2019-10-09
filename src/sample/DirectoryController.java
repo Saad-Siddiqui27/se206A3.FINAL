@@ -44,7 +44,7 @@ public class DirectoryController {
            pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
            SwitchScenes sw = new SwitchScenes(_Audio);
            try {
-               sw.switchScenes("AudioMerging.fxml");
+               sw.switchScenes("../Fxml/AudioMerging.fxml");
            } catch (Exception e) {
                e.printStackTrace();
            }
@@ -58,7 +58,7 @@ public class DirectoryController {
             pbuilder.getInstance().saveTerm(_directory.getSelectionModel().getSelectedItem().toString());
             SwitchScenes sw = new SwitchScenes(_Audio);
             try {
-                sw.switchScenes("VideoCreation.fxml");
+                sw.switchScenes("../Fxml/VideoCreation.fxml");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -74,7 +74,7 @@ public class DirectoryController {
                 SwitchScenes sw = new SwitchScenes(_Audio);
 
                 try {
-                    sw.switchScenes("MainMenu.fxml");
+                    sw.switchScenes("../Fxml/MainMenu.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

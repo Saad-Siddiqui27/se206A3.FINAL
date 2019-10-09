@@ -7,12 +7,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="_Menu" prefHeight="400.0" prefWidth="600.0" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+<AnchorPane fx:id="_Menu" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/Main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <children>
       <VBox alignment="CENTER_RIGHT" layoutX="163.0" layoutY="100.0" prefHeight="200.0" prefWidth="215.0" spacing="40.0" stylesheets="@Main.css">
          <children>
+<<<<<<< HEAD:out/production/se206A3/sample/MainMenu.fxml
             <Button mnemonicParsing="false" onAction="#switchToCreate" prefHeight="26.0" prefWidth="148.0" text="Create Audio" />
             <Button mnemonicParsing="false" onAction="#switchToAudio" prefHeight="26.0" prefWidth="148.0" stylesheets="@Main.css" text="Make Creations" />
+=======
+            <Button mnemonicParsing="false" onAction="#switchToCreate" prefHeight="26.0" prefWidth="92.0" text="Create" />
+            <Button mnemonicParsing="false" onAction="#switchToAudio" prefHeight="26.0" prefWidth="91.0" stylesheets="@../CSS/Main.css" text="Directory" />
+>>>>>>> master:out/production/se206A3/Fxml/MainMenu.fxml
             <ButtonBar prefHeight="40.0" prefWidth="200.0">
                <buttons>
                 <Button mnemonicParsing="false" onAction="#switchToPlay" prefHeight="28.0" prefWidth="145.0" text="Play Creations" />

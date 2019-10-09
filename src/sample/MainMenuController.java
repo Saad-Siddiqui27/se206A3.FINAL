@@ -37,7 +37,7 @@ public class MainMenuController {
 
     public void switchToCreate() {
         try {
-            switchScenes("create.fxml");
+            switchScenes("../Fxml/create.fxml");
         } catch (Exception e) {
             e.printStackTrace();
 
@@ -53,7 +53,7 @@ public class MainMenuController {
 
 
         try {
-            sw.switchScenes("Directoy.fxml");
+            sw.switchScenes("../Fxml/Directoy.fxml");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,7 +64,7 @@ public class MainMenuController {
             SwitchScenes sw = new SwitchScenes(_Menu);
 
             try {
-                sw.switchScenes("Play.fxml");
+                sw.switchScenes("../Fxml/Play.fxml");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -6,8 +6,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" stylesheets="@Directory.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
+<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/Directory.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
    <children>
+<<<<<<< HEAD:src/sample/Directoy.fxml
       <Button layoutX="462.0" layoutY="105.0" mnemonicParsing="false" onAction="#goInAudioMerge" opacity="0.9" text="Merge Audio" />
       <Button layoutX="468.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToMain" opacity="0.94" text="Main Menu" />
       <ListView fx:id="_directory" layoutX="12.0" layoutY="50.0" opacity="0.65" prefHeight="330.0" prefWidth="195.0" />
@@ -16,5 +17,12 @@
          <font>
             <Font size="33.0" />
          </font></Text>
+=======
+      <Button layoutX="462.0" layoutY="105.0" mnemonicParsing="false" onAction="#goInAudioMerge" text="Merge Audio" />
+      <Button layoutX="468.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToMain" text="Main Menu" />
+      <ListView fx:id="_directory" layoutX="22.0" layoutY="30.0" opacity="0.5" prefHeight="355.0" prefWidth="195.0" />
+      <Button layoutX="462.0" layoutY="189.0" mnemonicParsing="false" onAction="#goInVideoCreate" stylesheets="@../CSS/Directory.css" text="Create Video" />
+      <Text fill="#f20404" layoutX="22.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a directory from here:" />
+>>>>>>> master:out/production/se206A3/Fxml/Directoy.fxml
    </children>
 </AnchorPane>
