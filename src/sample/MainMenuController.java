@@ -17,17 +17,11 @@ import java.util.List;
 
 public class MainMenuController {
 
-    @FXML Pane _Menu;
-
-
-
-
     @FXML
-    public void initialize(){
-//        String s =pbuilder.getInstance().getTerm();
-//        s = s.substring(1,s.length()-1);
-//        pbuilder.getInstance().probuild("cd /afs/ec.auckland.ac.nz/users/m/s/msid633/unixhome/IdeaProjects/se206A3");
-    }
+    Pane _Menu;
+
+
+
 
 
     public void switchScenes(String fxml) throws IOException {
@@ -41,8 +35,6 @@ public class MainMenuController {
     }
 
 
-
-
     public void switchToCreate() {
         try {
             switchScenes("create.fxml");
@@ -54,23 +46,37 @@ public class MainMenuController {
     }
 
 
-    public void switchToAudio(){
-
+    public void switchToAudio() {
 
 
         SwitchScenes sw = new SwitchScenes(_Menu);
 
 
-        try{
+        try {
             sw.switchScenes("Directoy.fxml");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+        public void switchToPlay() {
 
+            SwitchScenes sw = new SwitchScenes(_Menu);
 
+            try {
+                sw.switchScenes("Play.fxml");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
 
 
 }
+
+
+
+
+
+
+
