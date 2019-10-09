@@ -78,7 +78,7 @@ public class AudioMerging {
 
             }
             String s = pbuilder.getInstance().getTerm();
-            s = s.substring(1, s.length() - 1);
+
             pbuilder.getInstance().probuild2("cd " + s + ".au;pwd");
 
             pbuilder.getInstance().probuild("cd " + s + ".au ; sox " + files.toString() + "" + _merged.getText() + ".wav");
@@ -88,11 +88,7 @@ public class AudioMerging {
 
 
         }
-
-
     }
-
-
 
     public void switchToMain() {
         Platform.runLater(new Multi() {
@@ -101,7 +97,7 @@ public class AudioMerging {
                 SwitchScenes sw = new SwitchScenes(_creation);
 
                 try {
-                    sw.switchScenes("MainMenu.fxml");
+                    sw.switchScenes("../Fxml/MainMenu.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -120,7 +116,7 @@ public class AudioMerging {
                 SwitchScenes sw = new SwitchScenes(_creation);
 
                 try {
-                    sw.switchScenes("Directoy.fxml");
+                    sw.switchScenes("../Fxml/Directoy.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

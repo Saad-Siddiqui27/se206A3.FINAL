@@ -208,7 +208,7 @@ public void Save() {
             public void run() {
 
                 try {
-                    switchScenes("MainMenu.fxml");
+                    switchScenes("../Fxml/MainMenu.fxml");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

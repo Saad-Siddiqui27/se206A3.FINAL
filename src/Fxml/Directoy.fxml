@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" stylesheets="@Directory.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
+<AnchorPane fx:id="_Audio" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/Directory.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DirectoryController">
    <children>
       <Button layoutX="462.0" layoutY="105.0" mnemonicParsing="false" onAction="#goInAudioMerge" text="Merge Audio" />
       <Button layoutX="468.0" layoutY="330.0" mnemonicParsing="false" onAction="#switchToMain" text="Main Menu" />
       <ListView fx:id="_directory" layoutX="22.0" layoutY="30.0" opacity="0.5" prefHeight="355.0" prefWidth="195.0" />
-      <Button layoutX="462.0" layoutY="189.0" mnemonicParsing="false" onAction="#goInVideoCreate" stylesheets="@Directory.css" text="Create Video" />
+      <Button layoutX="462.0" layoutY="189.0" mnemonicParsing="false" onAction="#goInVideoCreate" stylesheets="@../CSS/Directory.css" text="Create Video" />
       <Text fill="#f20404" layoutX="22.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a directory from here:" />
    </children>
 </AnchorPane>

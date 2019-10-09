@@ -1,4 +1,4 @@
 .root{
-    -fx-background-image:url('../sample/Main.jpg');
+    -fx-background-image:url('Main.jpg');
     -fx-background-size: cover;
 }
