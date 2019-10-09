@@ -1,0 +1,4 @@
+.root{
+    -fx-background-image:url('../sample/VideoCreate.jpg');
+    -fx-background-size: cover;
+}
